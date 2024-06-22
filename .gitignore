@@ -10,3 +10,5 @@ premake-VisualStudio.bat
 .ash_history
 raylib_premake5*
 premake5*
+.ssh
+.gitconfig
