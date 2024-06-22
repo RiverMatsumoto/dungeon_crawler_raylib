@@ -45,6 +45,7 @@ all: $(PROJECTS)
 raylib:
 ifneq (,$(raylib_config))
 	@echo "==== Building raylib ($(raylib_config)) ===="
+	@cp ./raylibMakefile ./raylib-master/Makefile -f
 	@${MAKE} --no-print-directory -C raylib-master -f Makefile config=$(raylib_config)
 endif
 
@@ -55,7 +56,7 @@ ifneq (,$(game_premake_config))
 endif
 
 clean:
-	# @${MAKE} --no-print-directory -C raylib-master -f Makefile clean
+	@${MAKE} --no-print-directory -C raylib-master -f Makefile clean
 	@${MAKE} --no-print-directory -C game -f Makefile clean
 
 help:
