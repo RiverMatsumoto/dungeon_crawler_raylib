@@ -11,3 +11,4 @@ raylib_premake5*
 premake5*
 .ssh
 .gitconfig
+raylib-master/Makefile
