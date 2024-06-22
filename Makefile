@@ -8,6 +8,8 @@ ifndef verbose
   SILENT = @
 endif
 
+raylib_makefile = raylib-master/Makefile
+
 ifeq ($(config),debug_x64)
   raylib_config = debug_x64
   game_premake_config = debug_x64
@@ -43,11 +45,13 @@ PROJECTS := raylib game-premake
 all: $(PROJECTS)
 
 raylib:
+ifneq (,$(raylib_makefile))
+	@cp ./raylibMakefile ./raylib-master/Makefile -f
+endif
 ifneq (,$(raylib_config))
 	@echo "==== Downloading raylib ===="
 	@git submodule update --init --recursive
 	@echo "==== Building raylib ($(raylib_config)) ===="
-	@cp ./raylibMakefile ./raylib-master/Makefile -f
 	@${MAKE} --no-print-directory -C raylib-master -f Makefile config=$(raylib_config)
 endif
 
