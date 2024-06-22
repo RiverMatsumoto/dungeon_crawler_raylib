@@ -44,6 +44,8 @@ all: $(PROJECTS)
 
 raylib:
 ifneq (,$(raylib_config))
+	@echo "==== Downloading raylib ===="
+	@git submodule update --init --recursive
 	@echo "==== Building raylib ($(raylib_config)) ===="
 	@cp ./raylibMakefile ./raylib-master/Makefile -f
 	@${MAKE} --no-print-directory -C raylib-master -f Makefile config=$(raylib_config)
